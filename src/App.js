@@ -1,42 +1,22 @@
-import { createContext, useRef } from "react";
-import Video from './Video'
-import Button from "./Video/button/Button";
+import VideoPage from "./page/VideoPage/VideoHandle/VideoPage"
+import ParagraphPage from "./page/ParagraphPage/ParagraphPage"
+import { Routes, Route, Link } from 'react-router-dom'
 
-export const videoContext = createContext()
 
-function App() {
-
-  const videoRef = useRef()
-
-  const handlePlay = () => {
-    videoRef.current.play()
-
-  }
-
-  const handlePause = () => {
-    videoRef.current.pause()
-  }
-
-  const handle = {
-    handlePause,
-    handlePlay,
-
-  }
-
+function App () {
   return (
-    <videoContext.Provider value={handle} >
-
-      <Video ref={videoRef} ></Video>
-      <Button primary>Play</Button>
-      <Button error >Pause</Button>
-    </videoContext.Provider>
+    <>
+        <Link to="/VideoPage">Video</Link>
+        <Link to="/ParagraphPage">Paragraph</Link>
 
 
+      <Routes>
+        <Route path="/VideoPage" element={<VideoPage />}></Route>
+        <Route path="/ParagraphPage" element={<ParagraphPage />}></Route>
+      </Routes>
+    </>
 
   )
-
- 
 }
 
-
-export default App;
+export default App
