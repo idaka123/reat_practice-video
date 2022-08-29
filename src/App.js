@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useRef } from "react";
+import Video from './Video'
+import Button from "./Video/button/Button";
+
+export const videoContext = createContext()
 
 function App() {
+
+  const videoRef = useRef()
+
+  const handlePlay = () => {
+    videoRef.current.play()
+
+  }
+
+  const handlePause = () => {
+    videoRef.current.pause()
+  }
+
+  const handle = {
+    handlePause,
+    handlePlay,
+
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <videoContext.Provider value={handle} >
+
+      <Video ref={videoRef} ></Video>
+      <Button primary>Play</Button>
+      <Button error >Pause</Button>
+    </videoContext.Provider>
+
+
+
+  )
+
+ 
 }
+
 
 export default App;

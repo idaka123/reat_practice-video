@@ -1,0 +1,16 @@
+.btn {
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    padding : 4px 16px;
+
+}
+
+.primary {
+    background-color: rgb(91, 73, 226);
+    color: #fff;
+}
+
+.error {
+    background-color: rgb(203, 67, 67);
+    color: #fff;
+}
